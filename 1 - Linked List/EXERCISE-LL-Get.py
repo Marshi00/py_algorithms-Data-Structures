@@ -2,7 +2,7 @@ class Node:
     def __init__(self, value):
         self.value = value
         self.next = None
-        
+
 
 class LinkedList:
     def __init__(self, value):
@@ -16,7 +16,7 @@ class LinkedList:
         while temp is not None:
             print(temp.value)
             temp = temp.next
-        
+
     def append(self, value):
         new_node = Node(value)
         if self.length == 0:
@@ -33,7 +33,7 @@ class LinkedList:
             return None
         temp = self.head
         pre = self.head
-        while(temp.next):
+        while (temp.next):
             pre = temp
             temp = temp.next
         self.tail = pre
@@ -55,33 +55,36 @@ class LinkedList:
         self.length += 1
         return True
 
-    ## WRITE POP_FIRST METHOD HERE ##
-    #                               #
-    #                               #
-    #                               #
-    #                               #
-    #################################
+    def pop_first(self):
+        if self.length == 0:
+            return None
+        temp = self.head
+        self.head = self.head.next
+        temp.next = None
+        self.length -= 1
+        if self.length == 0:
+            self.tail = None
+        return temp
+
+    def get(self, index):
+        if index < 0 or index > self.length:
+            return None
+        temp = self.head
+        for _ in range(index):
+            temp = temp.next
+        return temp
 
 
-
-
-my_linked_list = LinkedList(2)
+my_linked_list = LinkedList(0)
 my_linked_list.append(1)
+my_linked_list.append(2)
+my_linked_list.append(3)
 
-
-# (2) Items - Returns 2 Node
-print(my_linked_list.pop_first().value)
-# (1) Item -  Returns 1 Node
-print(my_linked_list.pop_first().value)
-# (0) Items - Returns None
-print(my_linked_list.pop_first())
-
+print(my_linked_list.get(3).value)
 
 """
     EXPECTED OUTPUT:
     ----------------
-    2
-    1
-    None
+    3
 
 """

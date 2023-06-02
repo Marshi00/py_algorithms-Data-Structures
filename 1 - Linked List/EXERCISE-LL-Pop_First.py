@@ -2,7 +2,7 @@ class Node:
     def __init__(self, value):
         self.value = value
         self.next = None
-        
+
 
 class LinkedList:
     def __init__(self, value):
@@ -16,7 +16,7 @@ class LinkedList:
         while temp is not None:
             print(temp.value)
             temp = temp.next
-        
+
     def append(self, value):
         new_node = Node(value)
         if self.length == 0:
@@ -33,7 +33,7 @@ class LinkedList:
             return None
         temp = self.head
         pre = self.head
-        while(temp.next):
+        while (temp.next):
             pre = temp
             temp = temp.next
         self.tail = pre
@@ -66,51 +66,22 @@ class LinkedList:
             self.tail = None
         return temp
 
-    def get(self, index):
-        if index < 0 or index >= self.length:
-            return None
-        temp = self.head
-        for _ in range(index):
-            temp = temp.next
-        return temp
-        
-    ## WRITE SET_VALUE METHOD HERE ##
-    #                               #
-    #                               #
-    #                               #
-    #                               #
-    #################################
-    
 
+my_linked_list = LinkedList(2)
+my_linked_list.append(1)
 
-
-my_linked_list = LinkedList(11)
-my_linked_list.append(3)
-my_linked_list.append(23)
-my_linked_list.append(7)
-
-print('LL before set_value():')
-my_linked_list.print_list()
-
-my_linked_list.set_value(1,4)
-
-print('\nLL after set_value():')
-my_linked_list.print_list()
-
-
+# (2) Items - Returns 2 Node
+print(my_linked_list.pop_first().value)
+# (1) Item -  Returns 1 Node
+print(my_linked_list.pop_first().value)
+# (0) Items - Returns None
+print(my_linked_list.pop_first())
 
 """
     EXPECTED OUTPUT:
     ----------------
-    LL before set_value():
-    11
-    3
-    23
-    7
+    2
+    1
+    None
 
-    LL after set_value():
-    11
-    4
-    23
-    7
 """
