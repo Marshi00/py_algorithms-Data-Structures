@@ -3,7 +3,7 @@ class Node:
         self.value = value
         self.next = None
         self.prev = None
-        
+
 
 class DoublyLinkedList:
     def __init__(self, value):
@@ -17,7 +17,7 @@ class DoublyLinkedList:
         while temp is not None:
             print(temp.value)
             temp = temp.next
-        
+
     def append(self, value):
         new_node = Node(value)
         if self.head is None:
@@ -36,8 +36,8 @@ class DoublyLinkedList:
         temp = self.tail
         if self.length == 1:
             self.head = None
-            self.tail = None 
-        else:       
+            self.tail = None
+        else:
             self.tail = self.tail.prev
             self.tail.next = None
             temp.prev = None
@@ -50,39 +50,57 @@ class DoublyLinkedList:
             self.head = new_node
             self.tail = new_node
         else:
-            new_node.next = self.head
             self.head.prev = new_node
+            new_node.next = self.head
             self.head = new_node
         self.length += 1
         return True
 
-    ## WRITE POP_FIRST METHOD HERE ##
-    #                               #
-    #                               #
-    #                               #
-    #                               #
-    #################################
-
-
-
 
 my_doubly_linked_list = DoublyLinkedList(2)
-my_doubly_linked_list.append(1)
+my_doubly_linked_list.append(3)
 
+print('Before prepend():')
+print('----------------')
+print('Head:', my_doubly_linked_list.head.value)
+print('Tail:', my_doubly_linked_list.tail.value)
+print('Length:', my_doubly_linked_list.length, '\n')
+print('Doubly Linked List:')
+my_doubly_linked_list.print_list()
 
-# (2) Items - Returns 2 Node
-print(my_doubly_linked_list.pop_first().value)
-# (1) Item -  Returns 1 Node
-print(my_doubly_linked_list.pop_first().value)
-# (0) Items - Returns None
-print(my_doubly_linked_list.pop_first())
+my_doubly_linked_list.prepend(1)
 
+print('\n\nAfter prepend():')
+print('---------------')
+print('Head:', my_doubly_linked_list.head.value)
+print('Tail:', my_doubly_linked_list.tail.value)
+print('Length:', my_doubly_linked_list.length, '\n')
+print('Doubly Linked List:')
+my_doubly_linked_list.print_list()
 
 """
     EXPECTED OUTPUT:
+    
+    Before prepend():
     ----------------
+    Head: 2
+    Tail: 3
+    Length: 2 
+
+    Doubly Linked List:
     2
+    3
+
+
+    After prepend():
+    ---------------
+    Head: 1
+    Tail: 3
+    Length: 3 
+
+    Doubly Linked List:
     1
-    None
+    2
+    3
 
 """

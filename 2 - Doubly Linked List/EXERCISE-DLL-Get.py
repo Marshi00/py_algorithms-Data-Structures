@@ -1,10 +1,9 @@
-
 class Node:
     def __init__(self, value):
         self.value = value
         self.next = None
         self.prev = None
-        
+
 
 class DoublyLinkedList:
     def __init__(self, value):
@@ -18,7 +17,7 @@ class DoublyLinkedList:
         while temp is not None:
             print(temp.value)
             temp = temp.next
-        
+
     def append(self, value):
         new_node = Node(value)
         if self.head is None:
@@ -37,8 +36,8 @@ class DoublyLinkedList:
         temp = self.tail
         if self.length == 1:
             self.head = None
-            self.tail = None 
-        else:       
+            self.tail = None
+        else:
             self.tail = self.tail.prev
             self.tail.next = None
             temp.prev = None
@@ -67,31 +66,40 @@ class DoublyLinkedList:
         else:
             self.head = self.head.next
             self.head.prev = None
-            temp.next = None      
+            temp.next = None
         self.length -= 1
         return temp
 
-    ### WRITE GET METHOD HERE ###
-    #                           #
-    #                           #
-    #                           #
-    #                           #
-    #############################
-
-
+    def get(self, index):
+        if index < 0 or index >= self.length:
+            return None
+        temp = self.head
+        if index < self.length / 2:
+            for _ in range(index):
+                print(_)
+                temp = temp.next
+        else:
+            temp = self.tail
+            for _ in range(self.length - 1, index, -1):
+                print(_)
+                temp = temp.prev
+        return temp
 
 
 my_doubly_linked_list = DoublyLinkedList(0)
 my_doubly_linked_list.append(1)
+my_doubly_linked_list.append(5)
+my_doubly_linked_list.append(6)
+my_doubly_linked_list.append(13)
+my_doubly_linked_list.append(12)
 my_doubly_linked_list.append(2)
 my_doubly_linked_list.append(3)
 
 print('Get node from first half of DLL:')
-print(my_doubly_linked_list.get(1).value)
+print(my_doubly_linked_list.get(3).value)
 
 print('\nGet node from second half of DLL:')
-print(my_doubly_linked_list.get(2).value)
-
+print(my_doubly_linked_list.get(5).value)
 
 """
     EXPECTED OUTPUT:
