@@ -2,7 +2,7 @@ class Node:
     def __init__(self, value):
         self.value = value
         self.next = None
-        
+
 
 class Queue:
     def __init__(self, value):
@@ -16,7 +16,7 @@ class Queue:
         while temp is not None:
             print(temp.value)
             temp = temp.next
-        
+
     def enqueue(self, value):
         new_node = Node(value)
         if self.first is None:
@@ -28,33 +28,25 @@ class Queue:
         self.length += 1
         return True
 
-    ## WRITE DEQUEUE METHOD HERE ##
-    #                             #
-    #                             #
-    #                             #
-    #                             #
-    ###############################
 
- 
-
- 
 my_queue = Queue(1)
+
+print('Queue before enqueue(2):')
+my_queue.print_queue()
+
 my_queue.enqueue(2)
 
-# (2) Items - Returns 2 Node
-print(my_queue.dequeue().value)
-# (1) Item -  Returns 1 Node
-print(my_queue.dequeue().value)
-# (0) Items - Returns None
-print(my_queue.dequeue())
-
-
+print('\nQueue after enqueue(2):')
+my_queue.print_queue()
 
 """
     EXPECTED OUTPUT:
     ----------------
+    Queue before enqueue(2):
+    1
+
+    Queue after enqueue(2):
     1
     2
-    None
 
 """
