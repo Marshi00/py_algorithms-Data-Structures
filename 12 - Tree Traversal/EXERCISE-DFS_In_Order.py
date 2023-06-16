@@ -3,7 +3,7 @@ class Node:
         self.value = value
         self.left = None
         self.right = None
-        
+
 
 class BinarySearchTree:
     def __init__(self):
@@ -23,12 +23,11 @@ class BinarySearchTree:
                     temp.left = new_node
                     return True
                 temp = temp.left
-            else: 
+            else:
                 if temp.right is None:
                     temp.right = new_node
                     return True
                 temp = temp.right
-
 
     def contains(self, value):
         if self.root is None:
@@ -42,7 +41,6 @@ class BinarySearchTree:
             else:
                 return True
         return False
-        
 
     def BFS(self):
         current_node = self.root
@@ -58,7 +56,6 @@ class BinarySearchTree:
             if current_node.right is not None:
                 queue.append(current_node.right)
         return results
-    
 
     def dfs_pre_order(self):
         results = []
@@ -75,24 +72,29 @@ class BinarySearchTree:
 
     def dfs_post_order(self):
         results = []
+
         def traverse(current_node):
             if current_node.left is not None:
                 traverse(current_node.left)
             if current_node.right is not None:
                 traverse(current_node.right)
             results.append(current_node.value)
+
         traverse(self.root)
         return results
 
-    ### WRITE DFS_IN_ORDER METHOD HERE ###
-    #                                    #
-    #                                    #
-    #                                    #
-    #                                    #
-    ######################################
-        
+    def dfs_in_order(self):
+        results = []
 
+        def traverse(current_node):
+            if current_node.left is not None:
+                traverse(current_node.left)
+            results.append(current_node.value)
+            if current_node.right is not None:
+                traverse(current_node.right)
 
+        traverse(self.root)
+        return results
 
 
 my_tree = BinarySearchTree()
@@ -106,17 +108,9 @@ my_tree.insert(82)
 
 print(my_tree.dfs_in_order())
 
-
-
 """
     EXPECTED OUTPUT:
     ----------------
     [18, 21, 27, 47, 52, 76, 82]
 
  """
-
-                
-
-
-
- 
